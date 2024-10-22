@@ -1,7 +1,6 @@
 import heapq
 import sys
 from collections import defaultdict
-from encodings.utf_7 import encode
 
 
 class Node:

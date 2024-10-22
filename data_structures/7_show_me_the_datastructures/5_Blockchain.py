@@ -7,13 +7,14 @@ class Block:
         self.timestamp = timestamp
         self.data = data
         self.previous_hash = previous_hash
-        self.hash = Block.calc_hash(data)
+        self.hash = self.calc_hash(data)
+        self.next = None
 
     def __repr__(self):
         return (
                 "timestamp:" + self.timestamp + " " + "data:" + self.data + "previous_hash:" + self.previous_hash + "hash:" + self.hash + "\n")
 
-    def calc_hash(str):
+    def calc_hash(self, str):
         sha = hashlib.sha256()
 
         hash_str = str.encode('utf-8')
@@ -23,39 +24,27 @@ class Block:
         return sha.hexdigest()
 
 
-class LinkedList:
-    def __init__(self, data=None):
-        self.data = data
-        self.next = None
+class BlockChain:
+    def __init__(self, head):
+        self.head = head
 
     def __repr__(self):
-        str = ""
-        node = self.data
-        node_str =  "timestamp:" + node.timestamp + "\n" + "data:" + node.data + "\n" + "previous_hash:" + node.previous_hash+ "\n"  + "hash:" + node.hash + "\n ------------------------------"
-        str = str + node_str
-        node = self.next
+        text = ""
+        node = self.head
         while node is not None:
-            node_str = "\ntimestamp:" + node.timestamp + "\n" + "data:" + node.data + "\n" + "previous_hash:" + node.previous_hash + "\n" + "hash:" + node.hash + "\n ------------------------------"
-            str = str + node_str
+            node_str = "\ntimestamp:" + node.timestamp + "\n" + "data:" + node.data + "\n" + "previous_hash:" + str(node.previous_hash) + "\n" + "hash:" + node.hash + "\n ------------------------------"
+            text = text + node_str
             node = node.next
-        return str
+        return text
 
 
-block = Block(datetime.now().strftime("%Y/%m/%d %H:%M:%S.%f%Z"), "Train head", "0")
-blockChain = LinkedList(block)
-blockChain.next = Block(datetime.now().strftime("%Y/%m/%d %H:%M:%S.%f%Z"), "The first Carriage",
-                        Block.calc_hash("Train head"))
-blockChain.next.next = Block(datetime.now().strftime("%Y/%m/%d %H:%M:%S.%f%Z"), "The second Carriage",
-                             Block.calc_hash("The first Carriage"))
-blockChain.next.next.next = None
-
+time = datetime.now().strftime("%Y/%m/%d %H:%M:%S.%f%Z")
+block = Block(time, "Train head", 0)
+blockChain = BlockChain(block)
+pre_node = blockChain.head
+block2 = Block(time, "Train first carriage", pre_node.hash)
+pre_node.next = block2
+pre_node = pre_node.next
+block3 = Block(time, "Train second carriage", pre_node.hash)
+pre_node.next = block3
 print(blockChain)
-
-## Add your own test cases: include at least three test cases
-## and two of them must include edge cases, such as null, empty or very large values
-
-## Test Case 1
-
-## Test Case 2
-
-## Test Case 3
