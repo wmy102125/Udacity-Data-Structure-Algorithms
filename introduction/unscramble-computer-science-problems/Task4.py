@@ -21,6 +21,7 @@ def find_telemarketer_num():
             outgoing_set.add(call[0])
             no_phone_set.add(call[1])
         telemarketer_num = outgoing_set.difference(no_phone_set)
+        telemarketer_num = sorted(telemarketer_num)
         for i in telemarketer_num:
             print(i)
 find_telemarketer_num()
