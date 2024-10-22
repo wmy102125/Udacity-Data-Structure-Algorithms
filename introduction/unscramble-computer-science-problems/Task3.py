@@ -44,8 +44,8 @@ with open('calls.csv', 'r') as f:
     for num in area_code_mobile_prefix:
         print(num)
 
-    print("%s percent of calls from fixed lines in Bangalore are calls \
-    to other fixed lines in Bangalore." % (fixed_receive_count * 100 // fixed_call_count))
+    print("%.2f percent of calls from fixed lines in Bangalore are calls \
+        to other fixed lines in Bangalore." % (fixed_receive_count * 100 / fixed_call_count))
 
 
     """

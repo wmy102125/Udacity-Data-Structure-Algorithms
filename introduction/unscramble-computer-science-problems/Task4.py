@@ -4,25 +4,27 @@ It's ok if you don't understand how to read files.
 """
 import csv
 
-with open('texts.csv', 'r') as f:
-    reader = csv.reader(f)
-    texts = list(reader)
 
-with open('calls.csv', 'r') as f:
-    reader = csv.reader(f)
-    calls = list(reader)
-    area_code_start = '('
-    area_code_space = ' '
-    telemarketer_nums = set()
-    for call in calls:
-        if area_code_start not in call[0] and area_code_space not in call[0]:
-            telemarketer_nums.add(call[0])
-        if area_code_start not in call[1] and area_code_space not in call[1]:
-            telemarketer_nums.add(call[1])
-    print("These numbers could be telemarketers:\n")
-    telemarketer_nums = sorted(telemarketer_nums)
-    for num in telemarketer_nums:
-        print(num)
+def find_telemarketer_num():
+    with open('texts.csv', 'r') as f:
+        reader = csv.reader(f)
+        texts = list(reader)
+        no_phone_set = set()
+        for text in texts:
+            no_phone_set.add(text[0])
+            no_phone_set.add(text[1])
+    with open('calls.csv', 'r') as f:
+        reader = csv.reader(f)
+        calls = list(reader)
+        outgoing_set = set()
+        for call in calls:
+            outgoing_set.add(call[0])
+            no_phone_set.add(call[1])
+        telemarketer_num = outgoing_set.difference(no_phone_set)
+        for i in telemarketer_num:
+            print(i)
+find_telemarketer_num()
+
 
 """
 TASK 4:

@@ -11,18 +11,21 @@ with open('texts.csv', 'r') as f:
 with open('calls.csv', 'r') as f:
     reader = csv.reader(f)
     calls = list(reader)
-    longest_time = 0
-    call_number = None
-    call_date = ""
+    phone_dict = dict()
     for call in calls:
-        curation = float(call[3])
-        if longest_time < curation:
-            longest_time = curation
-            call_number = call[0]
-            call_date = call[2]
+        if call[0] in phone_dict:
+            phone_dict[call[0]] +=  int(call[3])
+        else:
+            phone_dict[call[0]] = int(call[3])
+        if call[1] in phone_dict:
+            phone_dict[call[1]] += int(call[3])
+        else:
+            phone_dict[call[1]] = int(call[3])
+    max_duration_phone = max(phone_dict,key=phone_dict.get)
+    max_duration = max(phone_dict.values())
+    print("%s spent the longest time, %s seconds, on the phone during September 2016" % (max_duration_phone, max_duration))
 
-    print("%s spent the longest time, %s seconds, on the phone during "
-        "%s" % (call_number, longest_time,call_date))
+
 
 
 """
