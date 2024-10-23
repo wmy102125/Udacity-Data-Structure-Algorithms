@@ -100,3 +100,10 @@ solution = [[],
 
 test_case = [arr, solution]
 test_function(test_case)
+
+def find_dub_sets(arr):
+    """
+    :param: arr - input integer array
+    Return - list of lists (two dimensional array) where each list represents a subset
+    TODO: complete this method to return subsets of an array
+    """
