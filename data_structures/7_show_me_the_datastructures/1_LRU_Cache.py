@@ -96,13 +96,25 @@ def test_fuciont_set(test_case,our_cache):
 test_case_1 = ["name1","wmy1"]
 test_fuciont_get(test_case_1,our_cache)
 
-## Test Case 2
+## Test Case 2,getting the same value 6 times
 our_cache.set('name6', 'wmy6');
 
 test_case_2 = ["name6","wmy6"]
 test_fuciont_get(test_case_2,our_cache)
+test_fuciont_get(test_case_2,our_cache)
+test_fuciont_get(test_case_2,our_cache)
+test_fuciont_get(test_case_2,our_cache)
+test_fuciont_get(test_case_2,our_cache)
+test_fuciont_get(test_case_2,our_cache)
+## Test Case 3,getting the invalid value
 test_case_2 = ["name1",-1]
 test_fuciont_get(test_case_2,our_cache)
-## Test Case 3
-output  = {'name3': 'wmy3', 'name4': 'wmy4', 'name5': 'wmy5', 'name6': 'wmy6', 'name7': 'wmy7'}
-test_case_3 = ["name7",output]
+## Test Case 4,set the None value
+our_cache.set(None, None);
+
+test_case_2 = [None,None]
+test_fuciont_get(test_case_2,our_cache)
+
+our_cache.set("namename", "valuevalue");
+test_case_2 = ["namename","valuevalue"]
+test_fuciont_get(test_case_2,our_cache)

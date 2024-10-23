@@ -120,39 +120,47 @@ def test_function(test_case):
     else:
         output_set = sorted(convert_to_set(output))
     if output_set == test_case[2]:
-        print("Pass")
+        print("union Pass")
     else:
-        print("Fail")
+        print("union Fail")
     output = intersection(linked_list_1, linked_list_2)
     if output is None:
         output_set = None
     else:
         output_set = sorted(convert_to_set(output))
     if output_set == test_case[3]:
-        print("Pass")
+        print("insection Pass")
     else:
-        print("Fail")
+        print("insection Fail")
 
 
 ## Test Case 1
 
 element_1 = [3, 2, 4, 35, 6, 65, 6, 4, 3, 23]
 element_2 = [2, 3, 4]
-element_3 = [2, 3, 4, 6, 23, 35, 65]
-element_4 = [2, 3, 4]
-test_case_1 = [element_1, element_2, element_3, element_4]
+union_result = [2, 3, 4, 6, 23, 35, 65]
+insection_result = [2, 3, 4]
+test_case_1 = [element_1, element_2, union_result, insection_result]
 test_function(test_case_1)
 ## Test Case 2
 element_1 = [3, 2, 4, 35, 6, 65, 6, 4, 3, 23]
 element_2 = [0, 7, 9]
-element_3 = [0, 2, 3, 4, 6, 7, 9, 23, 35, 65]
-element_4 = None
-test_case_2 = [element_1, element_2, element_3, element_4]
+union_result = [0, 2, 3, 4, 6, 7, 9, 23, 35, 65]
+insection_result = None
+test_case_2 = [element_1, element_2, union_result, insection_result]
 test_function(test_case_2)
 ## Test Case 3
 element_1 = None
 element_2 = [0, 7, 9]
-element_3 = [0, 7, 9]
-element_4 = None
-test_case_3 = [element_1, element_2, element_3, element_4]
+union_result = [0, 7, 9]
+insection_result = None
+test_case_3 = [element_1, element_2,union_result, insection_result]
 test_function(test_case_3)
+
+## Test Case 4
+element_1 = None
+element_2 = None
+union_result = None
+insection_result = None
+test_case_4 = [element_1, element_2, union_result, insection_result]
+test_function(test_case_4)

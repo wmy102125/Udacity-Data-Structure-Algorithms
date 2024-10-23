@@ -16,23 +16,35 @@ class Block:
 
     def calc_hash(self, str):
         sha = hashlib.sha256()
-
-        hash_str = str.encode('utf-8')
-
-        sha.update(hash_str)
+        try:
+            hash_str = str.encode('utf-8')
+            sha.update(hash_str)
+        except Exception:
+            print("the str can't be null before get the hashcode")
 
         return sha.hexdigest()
 
 
 class BlockChain:
-    def __init__(self, head):
-        self.head = head
+    def __init__(self):
+        self.head = None
+        self.tail = None
+
+    def append(self, block):
+        if self.head is None:
+            self.head = block
+            self.tail = self.head
+        else:
+            self.tail.next = block
+            self.tail.next.previous_hash = self.tail.hash
+            self.tail = self.tail.next
 
     def __repr__(self):
         text = ""
         node = self.head
         while node is not None:
-            node_str = "\ntimestamp:" + node.timestamp + "\n" + "data:" + node.data + "\n" + "previous_hash:" + str(node.previous_hash) + "\n" + "hash:" + node.hash + "\n ------------------------------"
+            node_str = "\ntimestamp:" + node.timestamp + "\n" + "data:" + node.data + "\n" + "previous_hash:" + str(
+                node.previous_hash) + "\n" + "hash:" + node.hash + "\n ------------------------------"
             text = text + node_str
             node = node.next
         return text
@@ -40,11 +52,28 @@ class BlockChain:
 
 time = datetime.now().strftime("%Y/%m/%d %H:%M:%S.%f%Z")
 block = Block(time, "Train head", 0)
-blockChain = BlockChain(block)
-pre_node = blockChain.head
-block2 = Block(time, "Train first carriage", pre_node.hash)
-pre_node.next = block2
-pre_node = pre_node.next
-block3 = Block(time, "Train second carriage", pre_node.hash)
-pre_node.next = block3
-print(blockChain)
+block2 = Block(time, "Train first carriage",None)
+block3 = Block(time, "Train second carriage",None)
+blockChain = BlockChain()
+blockChain.append(block)
+blockChain.append(block2)
+blockChain.append(block3)
+#test_case_1
+test_case = blockChain
+node = test_case.head
+pre_hash = node.hash
+next_pre_hash = node.next.previous_hash
+print("Pass" if pre_hash == next_pre_hash else "Fail")
+
+# test_case_2,the str can't be null before get the hashcode
+blockChain = BlockChain()
+block2 = Block(time, None,None)
+blockChain.append(block2)
+
+
+
+#
+# blockChain = BlockChain(None)
+# block3 = Block(time, "head is None", pre_node.hash)
+# test_case = blockChain
+# print(test_case)

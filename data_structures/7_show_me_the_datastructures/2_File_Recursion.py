@@ -1,5 +1,7 @@
 import os
 
+from fontTools.misc.cython import returns
+
 
 def find_files(suffix, path):
     """
@@ -18,7 +20,13 @@ def find_files(suffix, path):
        a list of paths
     """
     result = list()
-    dir_file_lists = os.listdir(path)
+    try:
+        dir_file_lists = os.listdir(path)
+    except IOError as e:
+     print("open exception: %s: %s" %(e.errno, e.strerror))
+     return None
+    if dir_file_lists is None:
+        return []
     for item in dir_file_lists:
         if os.path.isfile(path + "/" + item):
             if item.endswith(suffix):
@@ -46,4 +54,11 @@ test_case_1 = [".c","./testdir/subdir2",[]]
 test_function(test_case_1)
 ## Test Case 3
 test_case_1 = [".c","./testdir/subdir3",['./testdir/subdir3/subsubdir1/b.c']]
+test_function(test_case_1)
+## Test Case 4
+test_case_1 = [".c","./111",None]
+test_function(test_case_1)
+
+## Test Case 4
+test_case_1 = [".cccc","./testdir",[]]
 test_function(test_case_1)
