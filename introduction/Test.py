@@ -1,10 +1,11 @@
+import sys
+
+
 class TreeNode:
     def __init__(self, value):
         self.value = value
         self.left = None
         self.right = None
-
-
 
 
 def delete_node(root, key):
@@ -63,12 +64,16 @@ root.right.right = TreeNode(80)
 
 # 删除节点 50
 root = delete_node(root, 50)
-print(root.value)
-print(root.left.value)
-print(root.right.value)
-print(root.left.left.value)
-print(root.left.right.value)
-print(root.right.left.value)
+
+
+# print(root.value)
+# print(root.left.value)
+# print(root.right.value)
+# print(root.left.left.value)
+# print(root.left.right.value)
+# print(root.right.left.value)
+
+
 # 打印删除后的树结构
 def inorder_traversal(node):
     if node:
@@ -76,4 +81,54 @@ def inorder_traversal(node):
         print(node.value, end=" ")
         inorder_traversal(node.right)
 
+
 inorder_traversal(root)
+
+
+def networkDelayTime(times, n, k):
+    """
+    :type times: List[List[int]]
+    :type n: int
+    :type k: int
+    :rtype: int
+    """
+    arr = [i for i in range(1, n + 1)]
+    arr_dict = dict()
+    arr_set = set(arr)
+    for i in arr:
+        if i == k:
+            arr_dict[i] = 0
+        else:
+            arr_dict[i] = sys.maxsize
+    exists = False
+    while arr_set:
+        # find the smallest node in arr_dict
+        # [1:infinity,2:0,3:infinity,4:infinity]
+        min_node_key = None
+        for element in arr_set:
+            if min_node_key is None:
+                min_node_key = element
+                continue
+            if arr_dict[min_node_key] > arr_dict[element]:
+                min_node_key = element
+        arr_set.remove(min_node_key)
+
+        for time_list in times:
+            if time_list[0] == min_node_key:
+                new_times = arr_dict[min_node_key] + time_list[2]
+                if arr_dict[time_list[1]] > new_times:
+                    arr_dict[time_list[1]] = new_times
+                    exists = True
+
+    max_time = max(arr_dict.values())
+    return max_time if max_time < sys.maxsize else -1
+
+times = [[2, 1, 1], [2, 3, 1], [3, 4, 1]]
+n = 4
+k = 2
+
+# print(networkDelayTime(times,n,k))
+times =[[1,2,1],[2,3,2],[1,3,1]]
+n = 3
+k = 2
+print(networkDelayTime(times, n, k))

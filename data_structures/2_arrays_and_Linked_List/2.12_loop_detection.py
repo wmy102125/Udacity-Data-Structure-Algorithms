@@ -2,7 +2,7 @@
 In computer science, linked lists are a fundamental data structure used to represent sequences of elements. However, linked lists can sometimes contain loops, where a node in the list points back to a previous node, creating a cycle. Detecting these loops is crucial for ensuring the integrity of operations on the list, as loops can lead to infinite loops in algorithms, memory leaks, and other unexpected behaviors.
 
 Objective
-In this exercise, you will implement a function to detect if a loop exists in a linked list. Detecting loops is a common problem with practical applications in various fields, such as network topology, graph theory, and debugging complex software systems.
+In this exercise, you will implement a function to detect if a loop exists in a linked list. Detecting loops is a common problem with practical applications in various fields, such as network topology, 2_graph theory, and debugging complex software systems.
 
 The Two-Pointer Technique
 To detect a loop, we'll use an efficient method known as the two-pointer or "runner" technique. This method involves two pointers that traverse the list at different speeds:
