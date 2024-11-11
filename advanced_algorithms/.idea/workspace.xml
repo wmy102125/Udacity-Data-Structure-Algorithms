@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ChangeListManager">
+    <list default="true" id="326dc4ab-fe3a-443b-a3be-81483dec7a4f" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/1_greedy_algrorithm/1_dijkstras_shortest_path.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/1_greedy_algrorithm/2_min_platforms.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/1_greedy_algrorithm/3_min_operations.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/1_greedy_algrorithm/Dijkstras_Shortest_Path_Algorithm.ipynb" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/1_greedy_algrorithm/Min_Operations.ipynb" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/1_greedy_algrorithm/__init__.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/1_greedy_algrorithm/greedy_introduction.ipynb" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/1_greedy_algrorithm/min_platforms.ipynb" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/2_graph/2.15_dijkstra.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/2_graph/2.16_connnecting_island.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/2_graph/2_DFS_iterative.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/2_graph/3_DFS_Recursive_Solution.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/2_graph/4_graph_bfs.ipynb" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/2_graph/4_graph_bfs.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/2_graph/Connecting-Islands.ipynb" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/2_graph/__init__.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/2_graph/assets/DFS2.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/2_graph/assets/DFS3.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/2_graph/assets/DFS4.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/2_graph/assets/DFS5.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/2_graph/assets/DFS6.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/2_graph/assets/DFS7.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/2_graph/assets/DFS8.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/2_graph/assets/DFS9.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/2_graph/dijkstra.ipynb" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/3_dynamic_programming/3.4_knapsack.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/3_dynamic_programming/__init__.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../test.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../.idea/Algorithm.iml" beforeDir="false" afterPath="$PROJECT_DIR$/../.idea/Algorithm.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../data_structures/2_arrays_and_Linked_List/2.12_loop_detection.py" beforeDir="false" afterPath="$PROJECT_DIR$/../data_structures/2_arrays_and_Linked_List/2.12_loop_detection.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../introduction/Test.py" beforeDir="false" afterPath="$PROJECT_DIR$/../introduction/Test.py" afterDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/.." />
+  </component>
+  <component name="GitHubPullRequestSearchHistory"><![CDATA[{
+  "lastFilter": {
+    "state": "OPEN",
+    "assignee": "wmy102125"
+  }
+}]]></component>
+  <component name="GithubPullRequestsUISettings"><![CDATA[{
+  "selectedUrlAndAccountId": {
+    "url": "https://github.com/wmy102125/Udacity-Data-Structure-Algorithms.git",
+    "accountId": "4809e78f-fe82-45ee-977c-84fd1ea559a7"
+  }
+}]]></component>
+  <component name="ProjectColorInfo"><![CDATA[{
+  "associatedIndex": 5
+}]]></component>
+  <component name="ProjectId" id="2ogcl206SqQ9xjgdk5pP4EkHVXB" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "git-widget-placeholder": "main",
+    "last_opened_file_path": "D:/develop/pythonWorkspace/Udacity-Data-Structure-Algorithms/advanced_algorithms"
+  }
+}]]></component>
+  <component name="SharedIndexes">
+    <attachedChunks>
+      <set>
+        <option value="bundled-python-sdk-884f5ed5d46b-c546a90a8094-com.jetbrains.pycharm.community.sharedIndexes.bundled-PC-242.22855.92" />
+      </set>
+    </attachedChunks>
+  </component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="326dc4ab-fe3a-443b-a3be-81483dec7a4f" name="Changes" comment="" />
+      <created>1731294807036</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1731294807036</updated>
+    </task>
+    <servers />
+  </component>
+</project>
