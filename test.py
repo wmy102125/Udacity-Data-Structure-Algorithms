@@ -1,38 +1,125 @@
-import heapq
 import collections
 
+# Define Item as a named tuple
+Item = collections.namedtuple('Item', ['weight', 'value'])
 
-def networkDelayTime(times, n, K):
-    # Step 1: 构建邻接表
-    graph = collections.defaultdict(list)
-    for u, v, w in times:
-        graph[u].append((v, w))
 
-    # Step 2: 使用 Dijkstra 算法初始化最短路径表
-    min_time = {i: float('inf') for i in range(1, n + 1)}
-    min_time[K] = 0  # 起点到自身的距离为 0
+# Naive Approach based on Recursion
+def knapsack_max_value(knapsack_max_weight, items):
+    lastIndex = len(items) - 1
+    return knapsack_recursive(knapsack_max_weight, items, lastIndex)
 
-    # Step 3: 使用优先队列（小顶堆）来进行 Dijkstra 计算
-    queue = [(0, K)]  # (当前距离, 节点)
-    while queue:
-        time, node = heapq.heappop(queue)
 
-        # 如果当前时间大于已记录的最短时间，跳过
-        if time > min_time[node]:
-            continue
+def knapsack_recursive(capacity, items, lastIndex):
+    print(f"Entering: Capacity = {capacity}, LastIndex = {lastIndex}")
 
-        # 更新邻接节点的距离
-        for neighbor, travel_time in graph[node]:
-            new_time = time + travel_time
-            # 如果找到更短的路径，更新距离表
-            if new_time < min_time[neighbor]:
-                min_time[neighbor] = new_time
-                heapq.heappush(queue, (new_time, neighbor))
+    # Base case
+    if (capacity <= 0) or (lastIndex < 0):
+        print(f"Base case hit: Returning 0 for Capacity = {capacity}, LastIndex = {lastIndex}")
+        return 0
 
-    # Step 4: 找到最短路径表中最大值（即信号传播到所有节点的时间）
-    max_time = max(min_time.values())
-    return max_time if max_time < float('inf') else -1
-times = [[2, 1, 1], [2, 3, 1], [3, 4, 1], [2, 5, 1]]
-n = 5
-K = 2
-print(networkDelayTime(times, n, K))  # 输出: 2
+    # Put the item in the knapsack
+    valueA = 0
+    if (items[lastIndex].weight <= capacity):
+        valueA = items[lastIndex].value + knapsack_recursive(capacity - items[lastIndex].weight, items, lastIndex - 1)
+
+    # Do not put the item in the knapsack
+    valueB = knapsack_recursive(capacity, items, lastIndex - 1)
+
+    # Pick the maximum of the two results
+    result = max(valueA, valueB)
+
+    print(f"Returning: Capacity = {capacity}, LastIndex = {lastIndex}, Result = {result}")
+    return result
+
+
+# Test
+tests = [
+    {
+        'correct_output': 14,
+        'input': {
+            'knapsack_max_weight': 15,
+            'items': [Item(10, 7), Item(9, 8), Item(5, 6)]
+        }
+    }
+]
+
+for test in tests:
+    print("\nStarting new test case")
+    output = knapsack_max_value(**test['input'])
+    assert output == test['correct_output'], f"Test failed: Expected {test['correct_output']}, got {output}"
+    print("Test passed.")
+
+"""
+The Approach - Dynamic Programming
+Store and reuse the intermediate results in a lookup table. This step is called memoization. Start with initializing a lookup table (a list), where the index represents the remaining capacity (kg) of the knapsack, and the element represents the maximum value ( $
+ ) that it can hold.
+
+For a given item, if the item-weight is less than the remaining capacity (kg) of the knapsack, then we have two options:
+
+Do not pick the item - In this case, the value ( $
+ ) of knapsack with the remaining capacity would not change. It can be represented as lookup_table[capacity].
+Pick the item - In this case, the value ( $
+ ) and capacity (kg) of the knapsack would be updated. The value ( $
+ ) of the knapsack will be equal to value ( $
+ ) of the current object + value ( $
+ ) in the lookup table at [capacity - item.weight] position. It can be represented as lookup_table[capacity - item.weight] + item.value.
+Update the lookup table, lookup_table[capacity], with the maximum of either of the above two values.
+
+Note - This approach with dynamic programming will have a time complexity as  𝑂(2𝑛𝐶)≡𝑂(𝑛𝐶)
+ , where  𝑛
+  is the number of given items and  𝐶
+  is the max capacity (kg) of the knapsack.
+"""
+
+
+def knapsack_max_value(knapsack_max_weight, items):
+    """
+    Get the maximum value of the knapsack.
+    """
+    lookup_table = [0 for _ in range(0, knapsack_max_weight + 1)]
+    for item in items:
+        for capacity in reversed(range(knapsack_max_weight + 1)):
+            if item.weight <= capacity:
+                lookup_table[capacity] = max(lookup_table[capacity], lookup_table[capacity - item.weight]+item.value)
+            else:
+                break
+    return lookup_table[-1]
+
+
+# solution
+# DP Solution
+# Get the maximum total value ($) of items that can be accommodated into the given knapsack
+def knapsack_max_value_solution(knapsack_max_weight, items):
+    # Initialize a lookup table to store the maximum value ($)
+    lookup_table = [0] * (knapsack_max_weight + 1)
+
+    # Iterate down the given list
+    for item in items:
+
+        # The "capcacity" represents amount of remaining capacity (kg) of knapsack at a given moment.
+        for capacity in reversed(range(knapsack_max_weight + 1)):
+
+            if item.weight <= capacity:
+                lookup_table[capacity] = max(lookup_table[capacity], lookup_table[capacity - item.weight] + item.value)
+            else:
+                break
+
+    return lookup_table[-1]
+
+
+tests = [
+    {
+        'correct_output': 14,
+        'input':
+            {
+                'knapsack_max_weight': 15,
+                'items': [Item(10, 7), Item(9, 8), Item(5, 6)]}},
+    {
+        'correct_output': 13,
+        'input':
+            {
+                'knapsack_max_weight': 25,
+                'items': [Item(10, 2), Item(29, 10), Item(5, 7), Item(5, 3), Item(5, 1), Item(24, 12)]}}]
+for test in tests:
+    assert test['correct_output'] == knapsack_max_value(**test['input'])
